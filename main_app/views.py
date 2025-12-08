@@ -68,7 +68,7 @@ def Sign_In_view(request):
 # ---------------- DASHBOARD VIEW ----------------
 def dashboard_view(request):
     # Simply render the dashboard template
-    return render(request, 'dashboard.html')
+    return render(request, 'Dashboard.html')
 
 
 

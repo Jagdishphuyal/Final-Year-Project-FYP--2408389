@@ -1,0 +1,98 @@
+import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts';
+
+const sampleData = [
+  { date: '2025-12-01', price: 145 },
+  { date: '2025-12-02', price: 150 },
+  { date: '2025-12-03', price: 147 },
+  { date: '2025-12-04', price: 153 },
+];
+
+export default function TradingDashboard() {
+  return (
+    <div className="min-h-screen bg-gray-100 flex">
+      {/* Sidebar */}
+      <aside className="w-64 bg-white shadow-md p-4">
+        <h1 className="text-2xl font-bold mb-6">TradeAI</h1>
+        <nav className="space-y-4">
+          <a href="#" className="block p-2 hover:bg-gray-200 rounded">Dashboard</a>
+          <a href="#" className="block p-2 hover:bg-gray-200 rounded">AI Predictions</a>
+          <a href="#" className="block p-2 hover:bg-gray-200 rounded">Portfolio</a>
+          <a href="#" className="block p-2 hover:bg-gray-200 rounded">Analytics</a>
+          <a href="#" className="block p-2 hover:bg-gray-200 rounded">News</a>
+        </nav>
+      </aside>
+
+      {/* Main Content */}
+      <main className="flex-1 p-6 space-y-6">
+        {/* Header */}
+        <header className="flex justify-between items-center mb-6">
+          <h2 className="text-3xl font-semibold">Dashboard</h2>
+          <div className="flex items-center space-x-4">
+            <button className="p-2 bg-blue-600 text-white rounded">Notifications</button>
+            <div className="rounded-full bg-gray-300 w-10 h-10"></div>
+          </div>
+        </header>
+
+        {/* Market Overview */}
+        <section className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="bg-white p-4 rounded shadow">
+            <h3 className="font-semibold mb-2">Bitcoin (BTC)</h3>
+            <p className="text-xl font-bold">$34,200</p>
+            <p className="text-green-500">+2.3%</p>
+          </div>
+          <div className="bg-white p-4 rounded shadow">
+            <h3 className="font-semibold mb-2">Ethereum (ETH)</h3>
+            <p className="text-xl font-bold">$2,450</p>
+            <p className="text-red-500">-1.1%</p>
+          </div>
+          <div className="bg-white p-4 rounded shadow">
+            <h3 className="font-semibold mb-2">S&P 500</h3>
+            <p className="text-xl font-bold">4,500</p>
+            <p className="text-green-500">+0.8%</p>
+          </div>
+        </section>
+
+        {/* AI Predictions Chart */}
+        <section className="bg-white p-6 rounded shadow">
+          <h3 className="font-semibold mb-4">AI Price Prediction</h3>
+          <LineChart width={800} height={300} data={sampleData}>
+            <Line type="monotone" dataKey="price" stroke="#8884d8" strokeWidth={2} />
+            <CartesianGrid stroke="#ccc" />
+            <XAxis dataKey="date" />
+            <YAxis />
+            <Tooltip />
+          </LineChart>
+        </section>
+
+        {/* Portfolio Snapshot */}
+        <section className="bg-white p-6 rounded shadow">
+          <h3 className="font-semibold mb-4">Portfolio</h3>
+          <table className="w-full text-left">
+            <thead>
+              <tr>
+                <th>Asset</th>
+                <th>Amount</th>
+                <th>Current Value</th>
+                <th>AI Suggestion</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>BTC</td>
+                <td>1.2</td>
+                <td>$41,040</td>
+                <td className="text-green-500">Buy</td>
+              </tr>
+              <tr>
+                <td>ETH</td>
+                <td>5</td>
+                <td>$12,250</td>
+                <td className="text-red-500">Hold</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      </main>
+    </div>
+  );
+}
